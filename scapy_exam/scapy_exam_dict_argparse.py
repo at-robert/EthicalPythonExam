@@ -11,13 +11,13 @@ def get_argument():
 
 def scan(ip):
     arp_request = scapy.ARP(pdst=ip)
-    print(arp_request.summary())
+    # print(arp_request.summary())
     # scapy.ls(scapy.ARP())
     broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
     # scapy.ls(scapy.Ether())
-    print(broadcast.summary())
+    # print(broadcast.summary())
     arp_request_broadcast = broadcast/arp_request
-    arp_request_broadcast.show()
+    # arp_request_broadcast.show()
 
     answered = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0]
     # print(answered.summary())
@@ -41,7 +41,7 @@ def print_result(result_list):
 #----------------------------------------------------------------------
 if __name__ == "__main__":
 
-    (options, arguments) = get_argument()
+    options = get_argument()
     ip_addr = options.ipaddress
     print(ip_addr)
     scan_result = scan(ip_addr)
